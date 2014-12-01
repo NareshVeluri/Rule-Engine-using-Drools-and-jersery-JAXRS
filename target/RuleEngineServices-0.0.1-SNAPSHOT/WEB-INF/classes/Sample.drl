@@ -1,0 +1,33 @@
+package com.sample;
+
+import net.vsspl.to.Transaction;
+import net.vsspl.to.TransactionStatus;
+
+
+rule "transaction for Karnataka"
+    when
+        transaction : Transaction(fromUser == "farmer", toUser == "trader" , state == "Karnataka")
+    then
+    	transaction.setDocuments("Kharidipatti");
+end
+
+rule "transaction for Andra pradesh or Telangana"    	
+    when
+        transaction : Transaction(fromUser == "farmer", toUser == "trader" , state == "Andra pradesh" || state == "Telangana")
+    then
+    	transaction.setDocuments("TakkaPatti");
+end
+
+rule "transaction for Maharastra"    	
+    when
+        transaction : Transaction(fromUser == "farmer", toUser == "trader" , state == "Maharastra")
+    then
+    	transaction.setDocuments("HisabPatti");
+end
+
+rule "transaction for Tamil nadu"    	
+    	 when
+        transaction : Transaction(fromUser == "farmer", toUser == "trader" , state == "Tamil nadu")
+    then
+    	transaction.setDocuments("Bill");
+end
